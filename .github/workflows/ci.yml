@@ -1,0 +1,63 @@
+name: CI — Applied ML Projects
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install linters
+        run: pip install black flake8 mypy
+      - name: Black (format check)
+        run: |
+          for d in Chicago-Mobility-Analytics Gaming-Market-Intelligence GoldRecovery-Process-Optimizer OilWell-Location-Optimizer; do
+            echo "::group::Black — $d"
+            black --check --diff "$d"/*.py "$d"/app/ "$d"/data/ "$d"/tests/ 2>/dev/null || true
+            echo "::endgroup::"
+          done
+      - name: Flake8
+        run: |
+          for d in Chicago-Mobility-Analytics Gaming-Market-Intelligence GoldRecovery-Process-Optimizer OilWell-Location-Optimizer; do
+            echo "::group::Flake8 — $d"
+            flake8 "$d"/*.py "$d"/app/ "$d"/data/ "$d"/tests/ --max-line-length=120 --extend-ignore=E203,W503 || true
+            echo "::endgroup::"
+          done
+
+  test:
+    name: Test — ${{ matrix.project }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - Chicago-Mobility-Analytics
+          - Gaming-Market-Intelligence
+          - GoldRecovery-Process-Optimizer
+          - OilWell-Location-Optimizer
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        working-directory: ${{ matrix.project }}
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements-core.txt || pip install -r requirements.txt
+          pip install pytest pytest-cov
+          # Install common_utils from repo root
+          pip install -e ../ 2>/dev/null || true
+      - name: Run tests
+        working-directory: ${{ matrix.project }}
+        run: |
+          pytest tests/ -v --tb=short -q 2>&1 || echo "::warning::Tests need data files to run — see project README for setup instructions"

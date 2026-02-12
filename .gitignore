@@ -1,0 +1,96 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ── Virtual Environments ───────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── IDE ────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Jupyter ────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Testing & Quality ──────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+.cache/
+.mypy_cache/
+.dmypy.json
+
+# ── Data Files ─────────────────────────────────────────
+# Large datasets must NOT be in git. Use DVC or download scripts.
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.feather
+*.arrow
+
+# ── Model Artifacts ────────────────────────────────────
+*.pkl
+*.joblib
+*.onnx
+*.pt
+*.pth
+models/*.pkl
+models/*.joblib
+artifacts/
+
+# ── MLflow ─────────────────────────────────────────────
+mlruns/
+mlartifacts/
+
+# ── Logs ───────────────────────────────────────────────
+*.log
+logs/
+
+# ── Environment Variables ──────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Docker ─────────────────────────────────────────────
+.dockerignore
+
+# ── Temporary ──────────────────────────────────────────
+*.tmp
+*.temp
+
+# ── Exceptions (keep these tracked) ───────────────────
+!requirements*.txt
+!config*.yaml
+!config*.yml
+!**/configs/*.yaml
+!**/configs/*.yml
