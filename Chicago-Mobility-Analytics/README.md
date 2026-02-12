@@ -1,143 +1,164 @@
 # 🚕 Chicago Mobility Analytics
 
-**Sistema de Análisis y Predicción de Demanda de Taxis en Chicago**
+**Taxi Demand Prediction System with Temporal Feature Engineering and Weather Fusion**
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
-[![Pandas](https://img.shields.io/badge/Pandas-2.0+-blue.svg)](https://pandas.pydata.org)
-[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-orange.svg)](https://scikit-learn.org)
-[![Coverage](https://img.shields.io/badge/Coverage-50%25-yellow.svg)](tests/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Coverage](https://img.shields.io/badge/Coverage-70%25-green.svg?style=flat-square)](tests/)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-> **Análisis temporal y predicción de demanda de taxis con modelos de series temporales y regresión.**
+> Predict hourly taxi demand in Chicago by combining temporal patterns, lag features, and weather conditions — served via FastAPI with Docker support.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Instalar dependencias
 pip install -r requirements.txt
-
-# 2. Entrenar modelo
-python main.py --mode train --input data/raw/taxi_data.csv
-
-# 3. Predecir demanda
-python main.py --mode predict --date "2018-03-15" --hour 18
+python main.py --mode train --config configs/default.yaml --seed 42
+python main.py --mode eval  --config configs/default.yaml
+python main.py --mode predict --config configs/default.yaml \
+    --start_ts "2017-11-11 10:00:00" --weather_conditions Good
 ```
 
 ---
 
-## 🎯 Descripción
+## 🎯 Problem & Solution
 
-### Problema
-Sweet Lift Taxi en Chicago necesita predecir la demanda de taxis para optimizar la asignación de conductores durante picos de demanda (especialmente en aeropuertos).
+**Problem**: Sweet Lift Taxi needs to predict hourly demand to optimize driver allocation during peak hours — especially around airports.
 
-### Solución
-- ✅ Modelo de regresión para predecir número de viajes por hora
-- ✅ Análisis de patrones temporales (día, hora, día de semana)
-- ✅ Feature engineering con lags y rolling statistics
-- ✅ RMSE < 50 viajes (precisión del 85%)
-
-### Tecnologías
-- **ML**: Scikit-learn, LightGBM
-- **Análisis**: Pandas, NumPy
-- **Visualización**: Matplotlib, Seaborn
-- **Testing**: pytest (50% coverage)
-
-### Dataset
-- **Fuente**: Sweet Lift Taxi - Chicago
-- **Registros**: ~26,000 observaciones horarias
-- **Periodo**: Verano 2017
-- **Target**: Número de viajes por hora
+**Solution**:
+- ✅ Regression model predicting trips per hour
+- ✅ Temporal pattern analysis (hour, day of week, weekend)
+- ✅ Feature engineering with lags and rolling statistics
+- ✅ Weather condition fusion (Good / Bad)
+- ✅ RMSE < 50 trips (85% accuracy)
 
 ---
 
-## 💻 Instalación
+## 🔧 Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **ML** | Scikit-learn (Random Forest) |
+| **Data** | Pandas, NumPy |
+| **API** | FastAPI, Pydantic, Uvicorn |
+| **Ops** | Docker, Docker Compose, Makefile |
+| **Quality** | pytest, Mypy, Black |
+| **Monitoring** | Drift detection (Evidently-based) |
+
+---
+
+## 💻 Installation
 
 ```bash
 cd Chicago-Mobility-Analytics
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-```
 
-### Con pyproject.toml
-```bash
+# Or with dev dependencies
 pip install -e ".[dev]"
 ```
 
 ---
 
-## 🚀 Uso
+## 📖 Usage
 
 ### CLI
 
-#### Entrenamiento
 ```bash
-python main.py --mode train \
-  --input data/raw/taxi_data.csv \
-  --output models/demand_predictor.pkl
+# Train
+python main.py --mode train --config configs/default.yaml --seed 42
+
+# Evaluate
+python main.py --mode eval --config configs/default.yaml
+
+# Predict single trip
+python main.py --mode predict --config configs/default.yaml \
+    --start_ts "2017-11-11 10:00:00" --weather_conditions Good
 ```
 
-#### Predicción
+### FastAPI
+
 ```bash
-python main.py --mode predict \
-  --model models/demand_predictor.pkl \
-  --date "2018-03-15" \
-  --hour 18
+make api   # http://localhost:8000/docs
 ```
 
-Output:
-```
-Predicted demand: 42 trips
-Confidence interval: [38, 46]
+```bash
+curl -X POST http://localhost:8000/predict_duration \
+  -H "Content-Type: application/json" \
+  -d '{"start_ts": "2017-11-11T10:00:00", "weather_conditions": "Good"}'
 ```
 
-#### Evaluación
+### Docker
+
 ```bash
-python main.py --mode evaluate \
-  --model models/demand_predictor.pkl \
-  --test-data data/processed/test.csv
+docker-compose up --build   # API at http://localhost:8000
+```
+
+### Makefile
+
+```bash
+make install      # Install dependencies
+make train        # Train model
+make eval         # Evaluate
+make api          # Start FastAPI server
+make check-drift  # Run drift detection
+make clean        # Remove artifacts
 ```
 
 ---
 
-## 🎓 Modelo
+## 🎓 Model
 
-### Algoritmo: Gradient Boosting (LightGBM)
+### Algorithm: Random Forest Regressor
 
 **Features**:
-- `hour`: Hora del día (0-23)
-- `day_of_week`: Día de la semana (0-6)
-- `is_weekend`: Indicador de fin de semana
-- `lag_1h`, `lag_24h`: Demanda en horas anteriores
-- `rolling_mean_3h`: Promedio móvil 3 horas
+- `hour` — Hour of day (0–23)
+- `day_of_week` — Day of week (0–6)
+- `is_weekend` — Weekend indicator
+- `lag_1h`, `lag_24h` — Demand in previous hours
+- `rolling_mean_3h` — 3-hour rolling average
+- `weather_conditions` — Good / Bad (binary)
 
-### Métricas
+### Metrics
 
-| Métrica | Valor | Benchmark |
-|---------|-------|-----------|
+| Metric | Value | Benchmark |
+|--------|-------|-----------|
 | **RMSE** | 48.2 | < 50 ✅ |
 | **MAE** | 35.1 | < 40 ✅ |
 | **R²** | 0.82 | > 0.75 ✅ |
 
+### Dataset
+- **Source**: Sweet Lift Taxi — Chicago
+- **Records**: ~26,000 hourly observations
+- **Period**: Summer 2017
+- **Target**: Number of trips per hour
+
 ---
 
-## 📁 Estructura
+## 📁 Project Structure
 
 ```
 Chicago-Mobility-Analytics/
+├── main.py                    # CLI (train / eval / predict)
+├── evaluate.py                # Standalone evaluation
+├── app/
+│   ├── fastapi_app.py         # REST API with /predict_duration + /health
+│   └── example_load.py        # Demo script
 ├── data/
-│   ├── raw/taxi_data.csv
-│   └── preprocess.py
-├── models/
-│   └── demand_predictor.pkl
-├── artifacts/
-│   └── metrics.json
-├── tests/
-│   └── test_preprocessing.py
-├── main.py
-└── evaluate.py
+│   ├── raw/                   # Source CSVs (not tracked — see data_card.md)
+│   └── preprocess.py          # Feature engineering pipeline
+├── configs/default.yaml       # Hyperparameters
+├── tests/                     # pytest suite
+├── monitoring/check_drift.py  # Data drift detection
+├── notebooks/                 # EDA + geospatial demos
+├── Dockerfile                 # Container packaging
+├── docker-compose.yml         # Local orchestration
+├── Makefile                   # Standard targets
+├── model_card.md              # Model documentation
+└── data_card.md               # Dataset documentation
 ```
 
 ---
@@ -145,29 +166,22 @@ Chicago-Mobility-Analytics/
 ## 🧪 Testing
 
 ```bash
-pytest --cov=. --cov-report=term-missing
+pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
-Coverage: 50%
+---
+
+## 📈 Key Insights
+
+- **Peak demand**: 18:00–20:00 (+35% above average)
+- **Busiest day**: Friday (+28% vs average)
+- **Airports**: 40% of trips during peak hours
+- **Prediction error**: ±35 trips average
 
 ---
 
-## 📈 Resultados
+## 📄 License
 
-### Insights Clave
-- **Pico de demanda**: 18:00-20:00 horas (+35%)
-- **Día más ocupado**: Viernes (+28% vs promedio)
-- **Aeropuertos**: 40% de viajes en horas pico
-- **Predicción**: Error promedio de ±35 viajes
+MIT License — See [LICENSE](LICENSE)
 
----
-
-## 📄 Licencia
-
-MIT License - Ver [LICENSE](../LICENSE)
-
-**Autor**: Duque Ortega Mutis (DuqueOM)
-
----
-
-**⭐ Star if useful!**
+**Author**: [Duque Ortega Mutis (DuqueOM)](https://github.com/DuqueOM)

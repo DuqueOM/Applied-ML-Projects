@@ -94,3 +94,4 @@ logs/
 !config*.yml
 !**/configs/*.yaml
 !**/configs/*.yml
+!**/data/raw/sample_*.csv

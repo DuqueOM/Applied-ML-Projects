@@ -1,146 +1,179 @@
 # 🎮 Gaming Market Intelligence
 
-**Sistema de Análisis de Mercado de Videojuegos y Predicción de Ventas**
+**Video Game Market Analysis & Commercial Success Prediction System**
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
-[![Pandas](https://img.shields.io/badge/Pandas-2.0+-blue.svg)](https://pandas.pydata.org)
-[![Coverage](https://img.shields.io/badge/Coverage-50%25-yellow.svg)](tests/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Coverage](https://img.shields.io/badge/Coverage-70%25-green.svg?style=flat-square)](tests/)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-> **Análisis de mercado de videojuegos con predicción de ventas y identificación de tendencias por plataforma, género y región.**
+> Analyze 36 years of video game sales data (1980–2016, 16,700+ titles) to identify market trends, test statistical hypotheses, and predict commercial success — served via FastAPI with Docker support.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Instalar
 pip install -r requirements.txt
-
-# 2. Análisis
-python main.py --mode analyze --year 2016
-
-# 3. Predicciones
-python main.py --mode predict --platform PS4 --genre Action
+python main.py --mode train --config configs/config.yaml --seed 42
+python main.py --mode eval  --config configs/config.yaml
+python main.py --mode predict --config configs/config.yaml \
+    --payload '{"platform":"PS4","genre":"Action","year_of_release":2015,"critic_score":85,"user_score":8.2,"rating":"M"}'
 ```
 
 ---
 
-## 🎯 Descripción
+## 🎯 Problem & Solution
 
-### Problema
-Ice (tienda online de videojuegos) necesita identificar patrones de éxito para planificar campañas publicitarias y stock para 2017.
+**Problem**: Ice (online game store) needs to identify success patterns to plan advertising campaigns and stock for 2017.
 
-### Solución
-- ✅ Análisis histórico de ventas (1980-2016)
-- ✅ Identificación de plataformas y géneros exitosos
-- ✅ Análisis regional (NA, EU, JP)
-- ✅ Testing de hipótesis estadísticas
-- ✅ Predicción de ventas por plataforma/género
-
-### Tecnologías
-- **Análisis**: Pandas, NumPy, SciPy
-- **Visualización**: Matplotlib, Seaborn
-- **Stats**: Pruebas de hipótesis (t-test, Mann-Whitney)
-- **Testing**: pytest
-
-### Dataset
-- **Fuente**: Historical game sales data
-- **Registros**: ~16,700 juegos
-- **Periodo**: 1980-2016
-- **Features**: Plataforma, género, publisher, rating, ventas por región
+**Solution**:
+- ✅ Historical sales analysis (1980–2016, 16,700+ titles)
+- ✅ Platform and genre success identification
+- ✅ Regional market segmentation (NA, EU, JP)
+- ✅ Statistical hypothesis testing (t-test, Mann-Whitney)
+- ✅ Commercial success prediction (>1M global sales)
 
 ---
 
-## 💻 Instalación
+## 🔧 Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **ML** | Scikit-learn (Random Forest Classifier) |
+| **Stats** | SciPy (t-test, Mann-Whitney U) |
+| **Data** | Pandas, NumPy |
+| **API** | FastAPI, Pydantic, Uvicorn |
+| **Ops** | Docker, Docker Compose, Makefile |
+| **Quality** | pytest, Mypy, Black |
+| **Monitoring** | Drift detection (Evidently-based) |
+
+---
+
+## 💻 Installation
 
 ```bash
 cd Gaming-Market-Intelligence
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ---
 
-## 🚀 Uso
+## 📖 Usage
 
 ### CLI
 
-#### Análisis de Mercado
 ```bash
-python main.py --mode analyze \
-  --input data/raw/games.csv \
-  --year 2016 \
-  --output reports/market_analysis.html
+# Train classifier
+python main.py --mode train --config configs/config.yaml --seed 42
+
+# Evaluate on test set
+python main.py --mode eval --config configs/config.yaml
+
+# Predict success for a new game
+python main.py --mode predict --config configs/config.yaml \
+    --payload '{"platform":"PS4","genre":"Action","year_of_release":2015,"critic_score":85,"user_score":8.2,"rating":"M"}'
 ```
 
-#### Predicción de Ventas
+### FastAPI
+
 ```bash
-python main.py --mode predict \
-  --platform PS4 \
-  --genre Action \
-  --rating M
+make api   # http://localhost:8000/docs
 ```
 
-Output:
+### Docker
+
+```bash
+docker-compose up --build   # API at http://localhost:8000
 ```
-Predicted global sales: 2.5M copies
-Regional breakdown:
-  NA: 1.2M
-  EU: 0.9M
-  JP: 0.4M
+
+### Makefile
+
+```bash
+make install      # Install dependencies
+make train        # Train model
+make eval         # Evaluate
+make api          # Start FastAPI server
+make check-drift  # Run drift detection
+make clean        # Remove artifacts
 ```
 
 ---
 
-## 🎓 Análisis
+## 🎓 Analysis
 
-### Plataformas Exitosas (2014-2016)
+### Top Platforms (2014–2016)
 
-| Plataforma | Ventas Globales | Juegos | Avg Rating |
-|------------|-----------------|--------|------------|
+| Platform | Global Sales | Titles | Avg Rating |
+|----------|-------------|--------|------------|
 | **PS4** | 385M | 342 | 7.2 |
 | **XOne** | 245M | 287 | 7.0 |
 | **PC** | 189M | 412 | 6.8 |
 
-### Géneros Top
+### Top Genres
 
-1. **Action** - 35% market share
-2. **Sports** - 18%
-3. **Shooter** - 15%
-4. **Role-Playing** - 12%
+1. **Action** — 35% market share
+2. **Sports** — 18%
+3. **Shooter** — 15%
+4. **Role-Playing** — 12%
 
-### Insights Regionales
+### Regional Insights
 
-**Norte América (NA)**:
-- Prefiere: Action, Shooter, Sports
-- Plataforma líder: XOne
+| Region | Preferred Genres | Leading Platform |
+|--------|-----------------|-----------------|
+| **North America** | Action, Shooter, Sports | Xbox One |
+| **Europe** | Action, Sports, Racing | PS4 |
+| **Japan** | Role-Playing, Action, Platform | 3DS |
 
-**Europa (EU)**:
-- Prefiere: Action, Sports, Racing
-- Plataforma líder: PS4
+### Hypotheses Tested
 
-**Japón (JP)**:
-- Prefiere: Role-Playing, Action, Platform
-- Plataforma líder: 3DS
+| Hypothesis | p-value | Result |
+|-----------|---------|--------|
+| Xbox One vs PC avg ratings are equal | 0.23 | Not significant — fail to reject H₀ |
+| Action vs Sports avg ratings are equal | 0.04 | **Significant** — reject H₀ ✅ |
 
 ---
 
-## 📁 Estructura
+## 📊 Model
+
+### Algorithm: Random Forest Classifier
+
+**Target**: Binary — commercial success (>1M global sales)
+
+**Features**: platform, year_of_release, genre, critic_score, user_score, rating
+
+### Dataset
+- **Source**: Historical game sales data
+- **Records**: ~16,700 titles
+- **Period**: 1980–2016
+- **Features**: Platform, genre, publisher, ESRB rating, regional sales
+
+---
+
+## 📁 Project Structure
 
 ```
 Gaming-Market-Intelligence/
+├── main.py                    # CLI (train / eval / predict)
+├── evaluate.py                # Standalone evaluation
+├── evaluate_business.py       # Business metric evaluation
+├── app/
+│   ├── fastapi_app.py         # REST API with /predict + /health
+│   └── example_load.py        # Demo script
 ├── data/
-│   ├── raw/games.csv
-│   └── preprocess.py
-├── notebooks/
-│   ├── EDA.ipynb
-│   └── statistical_tests.ipynb
-├── tests/
-│   └── test_preprocessing.py
-├── main.py
-└── analyze.py
+│   ├── raw/                   # Source CSVs (not tracked — see data_card.md)
+│   └── preprocess.py          # Feature engineering pipeline
+├── configs/config.yaml        # Hyperparameters & feature config
+├── tests/                     # pytest suite
+├── monitoring/check_drift.py  # Data drift detection
+├── notebooks/                 # EDA, statistical tests, presentation
+├── Dockerfile                 # Container packaging
+├── docker-compose.yml         # Local orchestration
+├── Makefile                   # Standard targets
+├── model_card.md              # Model documentation
+└── data_card.md               # Dataset documentation
 ```
 
 ---
@@ -148,32 +181,21 @@ Gaming-Market-Intelligence/
 ## 🧪 Testing
 
 ```bash
-pytest --cov=. --cov-report=term-missing
+pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
 ---
 
-## 📈 Resultados
+## 📈 2017 Predictions
 
-### Hipótesis Testeadas
-
-1. **Xbox One vs PC ratings**: p-value = 0.23 → No hay diferencia significativa
-2. **Action vs Sports ratings**: p-value = 0.04 → Diferencia significativa ✅
-
-### Predicciones para 2017
-
-- **Plataforma #1**: PS4 (continúa dominancia)
-- **Género emergente**: Battle Royale
-- **Rating**: M-rated games +15% en ventas
+- **Platform #1**: PS4 (continued dominance)
+- **Emerging genre**: Battle Royale
+- **Rating impact**: M-rated games +15% in sales
 
 ---
 
-## 📄 Licencia
+## 📄 License
 
-MIT License - Ver [LICENSE](../LICENSE)
+MIT License — See [LICENSE](LICENSE)
 
-**Autor**: Duque Ortega Mutis (DuqueOM)
-
----
-
-**⭐ Star if useful!**
+**Author**: [Duque Ortega Mutis (DuqueOM)](https://github.com/DuqueOM)

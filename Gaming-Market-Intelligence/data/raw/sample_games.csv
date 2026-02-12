@@ -1,0 +1,100 @@
+name,platform,year_of_release,genre,na_sales,eu_sales,jp_sales,other_sales,critic_score,user_score,rating
+Grand Theft Auto V,PS4,2014,Action,3.96,6.31,0.38,1.97,97,8.2,M
+Call of Duty: Black Ops 3,PS4,2015,Shooter,6.18,6.05,0.41,2.44,73,4.5,M
+FIFA 16,PS4,2015,Sports,1.12,6.14,0.06,1.64,82,3.9,E
+Star Wars Battlefront,PS4,2015,Shooter,4.07,3.81,0.18,1.30,73,3.2,T
+Fallout 4,PS4,2015,Role-Playing,3.57,2.88,0.21,1.12,87,6.0,M
+Uncharted 4,PS4,2016,Action,4.20,3.50,0.25,1.05,93,8.5,T
+Metal Gear Solid V,PS4,2015,Action,1.62,1.74,0.56,0.62,95,8.1,M
+The Witcher 3,PS4,2015,Role-Playing,1.54,2.84,0.10,0.87,92,8.5,M
+NBA 2K16,PS4,2015,Sports,3.20,0.64,0.03,0.32,85,4.5,E
+Minecraft,X360,2013,Misc,4.89,2.85,0.08,1.26,82,8.0,E10+
+Halo 5,XOne,2015,Shooter,3.92,1.34,0.04,0.60,84,6.5,T
+Forza Motorsport 6,XOne,2015,Racing,1.16,0.85,0.01,0.35,87,7.8,E
+Super Mario Maker,WiiU,2015,Platform,2.72,1.44,0.96,0.36,88,8.2,E
+Splatoon,WiiU,2015,Shooter,1.57,0.76,1.46,0.20,81,8.1,E10+
+Pokemon Alpha Sapphire,3DS,2014,Role-Playing,3.28,1.81,3.11,0.67,83,7.4,E
+Monster Hunter 4 Ultimate,3DS,2015,Role-Playing,0.42,0.44,2.58,0.14,86,8.5,T
+Yokai Watch,3DS,2013,Role-Playing,0.00,0.00,2.87,0.00,76,8.0,E
+Dragon Quest VIII,3DS,2015,Role-Playing,0.04,0.02,1.36,0.01,87,8.4,T
+Fire Emblem Fates,3DS,2015,Role-Playing,1.75,0.54,0.57,0.14,87,7.2,T
+The Division,PS4,2016,Shooter,2.48,2.72,0.14,0.98,68,3.9,M
+Overwatch,PS4,2016,Shooter,2.46,2.15,0.19,0.82,91,6.5,T
+Dark Souls III,PS4,2016,Role-Playing,1.20,1.83,0.40,0.50,89,7.8,T
+Doom,PS4,2016,Shooter,1.10,1.04,0.06,0.40,85,8.3,M
+Ratchet and Clank,PS4,2016,Platform,1.14,0.96,0.05,0.33,85,8.4,E10+
+Final Fantasy XV,PS4,2016,Role-Playing,1.28,1.12,0.93,0.37,81,7.6,T
+FIFA 17,PS4,2016,Sports,1.31,6.66,0.06,1.73,85,4.1,E
+Battlefield 1,PS4,2016,Shooter,2.61,3.27,0.14,1.05,89,7.3,M
+Titanfall 2,PS4,2016,Shooter,0.78,0.67,0.05,0.22,89,8.6,M
+Madden NFL 17,PS4,2016,Sports,2.65,0.18,0.00,0.11,82,4.0,E
+No Mans Sky,PS4,2016,Action,0.89,0.68,0.02,0.23,71,2.6,T
+Watch Dogs 2,PS4,2016,Action,0.86,0.90,0.03,0.31,82,7.5,M
+Mafia III,PS4,2016,Action,0.89,0.80,0.02,0.29,62,3.8,M
+Dishonored 2,PS4,2016,Action,0.30,0.41,0.02,0.12,86,7.0,M
+Gears of War 4,XOne,2016,Shooter,1.58,0.58,0.02,0.23,84,6.8,M
+Need for Speed 2015,PS4,2015,Racing,0.87,1.07,0.04,0.38,66,5.1,E10+
+Assassins Creed Syndicate,PS4,2015,Action,1.38,1.73,0.06,0.59,76,7.0,M
+Rocket League,PS4,2015,Sports,0.84,0.68,0.04,0.23,86,8.1,E
+Batman Arkham Knight,PS4,2015,Action,2.34,2.11,0.11,0.71,87,6.8,M
+Bloodborne,PS4,2015,Role-Playing,1.12,0.90,0.39,0.29,92,8.5,M
+Just Cause 3,PS4,2015,Action,0.66,0.90,0.02,0.28,74,5.8,M
+Guitar Hero Live,PS4,2015,Misc,0.25,0.27,0.00,0.09,73,4.8,T
+Mortal Kombat X,PS4,2015,Fighting,2.64,1.37,0.05,0.54,83,7.5,M
+Project Cars,PS4,2015,Racing,0.38,0.79,0.02,0.24,79,5.9,E
+Evolve,PS4,2015,Shooter,0.57,0.50,0.03,0.19,77,4.5,M
+Dying Light,PS4,2015,Action,0.97,1.12,0.03,0.37,74,8.2,M
+Wii Sports,Wii,2006,Sports,41.49,29.02,3.77,8.46,76,8.0,E
+New Super Mario Bros,DS,2006,Platform,11.38,9.23,6.50,2.90,89,8.8,E
+Wii Sports Resort,Wii,2009,Sports,15.75,11.01,3.28,2.96,82,8.0,E
+Grand Theft Auto V,PS3,2013,Action,7.02,9.09,0.98,3.96,97,8.2,M
+Pokemon X,3DS,2013,Role-Playing,5.17,3.58,4.35,1.23,87,8.1,E
+Tetris,GB,1989,Puzzle,23.20,2.26,4.22,0.58,,,,
+Super Mario Bros,NES,1985,Platform,29.08,3.58,6.81,0.77,,,,
+Pokemon Red,GB,1996,Role-Playing,11.27,8.89,10.22,1.00,,,,
+Duck Hunt,NES,1984,Shooter,26.93,0.63,0.28,0.47,,,,
+Super Mario World,SNES,1990,Platform,12.78,3.75,3.54,0.55,,,,
+Sonic the Hedgehog,GEN,1991,Platform,4.08,1.81,2.00,0.26,,,,
+Pac-Man,2600,1982,Puzzle,7.28,0.45,0.00,0.12,,,,
+Final Fantasy VII,PS,1997,Role-Playing,3.01,2.47,3.28,0.96,92,8.9,T
+Chrono Trigger,SNES,1995,Role-Playing,1.76,0.10,2.12,0.07,,,,
+Street Fighter II,SNES,1992,Fighting,2.47,0.65,2.88,0.12,,,,
+Tomb Raider,PS,1996,Action,2.87,3.21,0.48,0.93,,,,
+Resident Evil,PS,1996,Action,1.45,1.23,1.51,0.32,,,,
+GTA San Andreas,PS2,2004,Action,9.43,0.40,0.41,1.57,95,9.0,M
+Half-Life 2,PC,2004,Shooter,0.00,0.00,0.00,0.73,96,9.0,M
+World of Warcraft,PC,2004,Role-Playing,0.00,0.00,0.00,0.72,93,8.0,T
+Diablo III,PC,2012,Role-Playing,0.00,0.00,0.00,2.42,88,4.0,M
+Counter-Strike: GO,PC,2012,Shooter,0.00,0.00,0.00,0.85,83,6.2,M
+Skyrim,PC,2011,Role-Playing,0.00,0.00,0.00,1.17,94,8.1,M
+Minecraft PC,PC,2010,Misc,0.00,0.00,0.00,0.74,93,8.1,E10+
+Starcraft II,PC,2010,Strategy,0.00,0.00,0.00,1.13,93,8.2,T
+Legend of Zelda OOT,N64,1998,Action,4.10,1.89,1.45,0.47,,,,
+GoldenEye 007,N64,1997,Shooter,5.08,2.65,0.13,0.37,,,,
+Mario Kart 64,N64,1996,Racing,5.36,1.94,2.24,0.24,,,,
+Super Smash Bros,N64,1999,Fighting,2.93,0.62,1.97,0.14,,,,
+Donkey Kong Country,SNES,1994,Platform,6.39,1.71,3.00,0.14,,,,
+Mega Man X,SNES,1993,Platform,0.74,0.17,0.93,0.02,,,,
+Crash Bandicoot 2,PS,1997,Platform,2.88,1.82,0.96,0.45,,,,
+Spyro the Dragon,PS,1998,Platform,2.68,1.58,0.06,0.38,,,,
+Tekken 3,PS,1998,Fighting,3.52,2.24,1.38,0.83,,,,
+Gran Turismo 3,PS2,2001,Racing,4.89,4.80,1.14,1.12,,,,
+Kingdom Hearts,PS2,2002,Role-Playing,3.60,1.22,1.50,0.29,85,8.7,E
+Jak and Daxter,PS2,2001,Platform,2.18,1.32,0.11,0.40,90,8.5,E
+Ratchet and Clank PS2,PS2,2002,Platform,1.97,0.81,0.04,0.25,88,8.6,T
+Burnout 3,PS2,2004,Racing,1.76,1.24,0.03,0.39,94,9.0,E10+
+Devil May Cry,PS2,2001,Action,1.42,0.52,0.52,0.16,94,8.7,M
+Shadow of Colossus,PS2,2005,Action,0.81,0.58,0.40,0.12,91,9.0,T
+Okami,PS2,2006,Action,0.37,0.17,0.24,0.05,93,8.9,T
+God of War,PS2,2005,Action,3.17,1.48,0.13,0.57,94,8.8,M
+Dragon Quest VIII PS2,PS2,2004,Role-Playing,0.60,0.32,3.53,0.08,89,8.7,T
+Bravely Default,3DS,2012,Role-Playing,0.45,0.32,0.55,0.08,85,8.0,T
+Animal Crossing NL,3DS,2012,Simulation,2.85,2.10,4.46,0.51,88,8.6,E
+Persona 4 Golden,PSV,2012,Role-Playing,0.29,0.14,0.37,0.05,93,9.0,M
+Xenoblade Chronicles,Wii,2010,Role-Playing,0.49,0.39,0.46,0.07,92,8.7,T
+The Last of Us,PS3,2013,Action,4.23,3.21,0.35,1.38,95,9.2,M
+Dark Souls,PS3,2011,Role-Playing,0.77,0.55,0.52,0.17,89,8.4,M
+Bioshock Infinite,PS3,2013,Shooter,1.52,1.04,0.06,0.34,94,8.6,M
+Journey,PS3,2012,Action,0.29,0.11,0.01,0.05,92,8.5,E
+Portal 2,PC,2011,Puzzle,0.00,0.00,0.00,0.45,95,8.9,E10+
+Civilization V,PC,2010,Strategy,0.00,0.00,0.00,0.95,90,7.5,E10+
