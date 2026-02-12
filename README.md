@@ -120,6 +120,21 @@ Video game market analysis spanning 1980–2016 with 16,700+ titles. Includes **
 
 ---
 
+## 📦 Data
+
+Each project includes **sample data** (~100 rows) in `data/raw/sample_*.csv` so `make train` works immediately after cloning. For full-scale training, download the original datasets:
+
+| Project | Sample File | Full Dataset Source |
+|---------|-------------|-------------------|
+| **OilWell Location Optimizer** | `sample_geo_data_0.csv` | [TripleTen Data Science Program](https://tripleten.com/) — 3 geological region CSVs (500 wells each) |
+| **GoldRecovery Process Optimizer** | `sample_gold_recovery.csv` | [TripleTen Data Science Program](https://tripleten.com/) — Industrial process telemetry (87 columns, 16K+ rows) |
+| **Chicago Mobility Analytics** | `sample_trips.csv` | [Chicago Open Data Portal](https://data.cityofchicago.org/) — Taxi trips + NOAA weather data |
+| **Gaming Market Intelligence** | `sample_games.csv` | [TripleTen Data Science Program](https://tripleten.com/) — VGChartz/Metacritic aggregation (16,700+ titles) |
+
+Place downloaded files in the respective `data/raw/` directory and update `configs/*.yaml` paths if needed.
+
+---
+
 ## 🧪 Testing
 
 ```bash
