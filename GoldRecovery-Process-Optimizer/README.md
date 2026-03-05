@@ -6,7 +6,7 @@
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-F7931E?style=flat-square)](https://xgboost.readthedocs.io)
 [![LightGBM](https://img.shields.io/badge/LightGBM-4.0+-9ACD32?style=flat-square)](https://lightgbm.readthedocs.io)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Coverage](https://img.shields.io/badge/Coverage-70%25-green.svg?style=flat-square)](tests/)
+[![Coverage](https://img.shields.io/badge/Coverage-43%25-yellow.svg?style=flat-square)](tests/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
 > Predict gold recovery rates across rougher and final purification stages using a weighted ensemble (XGBoost + LightGBM + Random Forest) with custom sMAPE metric — served via FastAPI with Streamlit dashboard.

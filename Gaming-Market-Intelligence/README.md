@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Coverage](https://img.shields.io/badge/Coverage-70%25-green.svg?style=flat-square)](tests/)
+[![Coverage](https://img.shields.io/badge/Coverage-49%25-yellow.svg?style=flat-square)](tests/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
 > Analyze 36 years of video game sales data (1980–2016, 16,700+ titles) to identify market trends, test statistical hypotheses, and predict commercial success — served via FastAPI with Docker support.

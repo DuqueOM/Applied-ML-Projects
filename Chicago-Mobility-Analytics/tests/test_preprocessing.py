@@ -11,8 +11,8 @@ def test_data_loading():
     """Test that ride data can be loaded."""
     data = pd.DataFrame(
         {
-            "pickup_datetime": pd.date_range("2017-11-01", periods=100, freq="H"),
-            "dropoff_datetime": pd.date_range("2017-11-01 00:30:00", periods=100, freq="H"),
+            "pickup_datetime": pd.date_range("2017-11-01", periods=100, freq="h"),
+            "dropoff_datetime": pd.date_range("2017-11-01 00:30:00", periods=100, freq="h"),
             "trip_duration": np.random.randint(300, 3600, 100),
             "pickup_location": np.random.choice(["Downtown", "Airport", "Suburbs"], 100),
         }
